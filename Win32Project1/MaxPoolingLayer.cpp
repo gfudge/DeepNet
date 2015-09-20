@@ -5,6 +5,7 @@ template<typename T>
 MaxPoolingLayer<T>::MaxPoolingLayer(Slice<T> inputLayer, Slice<T> outputLayer, size_t poolSizeX, size_t poolSizeY)
 {
 	this->inputLayer = inputLayer;
+	this->outputLayer = outputLayer;
 	this->inputLayerSize = inputLayerSize;
 	this->outputLayerSize = outputLayerSize;
 	// Check pooling size is valid

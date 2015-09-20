@@ -12,6 +12,7 @@ public:
 private:
 	size_t poolSizeX;
 	size_t poolSizeY;
-	std::vector<T> inputLayer;
+	Slice<T> inputLayer;
+	Slice<T> outputLayer;
 };
 
