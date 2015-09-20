@@ -12,6 +12,7 @@ public:
 	std::vector<T> column(size_t column);
 	T getElement(size_t x, size_t y);
 	void setElement(size_t x, size_t y, T value);
+	Slice<T> getPool(size_t xMin, size_t yMin, size_t xMax, size_t yMax);
 private:
 	// Scalar value coordinates
 	size_t width;

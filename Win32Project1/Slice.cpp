@@ -71,6 +71,20 @@ void Slice<T>::setElement(size_t x, size_t y, T value)
 }
 
 template<typename T>
+Slice<T> Slice<T>::getPool(size_t xMin, size_t yMin, size_t xMax, size_t yMax)
+{
+	size_t height = yMax - yMin;
+	size_t width = xMax - xMin;
+	Slice<T> returnPool(width, height);
+	for (int i = yMin; i < yMax; i++) {
+		for (int j = xMin; j < xMax; i++) {
+			returnPool.setElement(i, j, value);
+		}
+	}
+	return (Slice<T>)returnPool;
+}
+
+template<typename T>
 T Slice<T>::getElement(size_t x, size_t y)
 {
 	if (this->isInit) {

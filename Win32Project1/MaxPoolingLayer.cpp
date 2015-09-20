@@ -30,8 +30,28 @@ MaxPoolingLayer<T>::~MaxPoolingLayer()
 
 // Algorithm for calculating max pool
 template<typename T>
-std::vector<T> MaxPoolingLayer<T>::calcuateOutputLayer()
+std::shared_ptr<Slice<T>> MaxPoolingLayer<T>::calcuateOutputLayer()
 {
-	// Check boundaries
-	return std::vector<T>();
+	// Init output slice
+	std::shared_ptr<Slice<T>> maxPools = std::make_shared<Slice<T>>(this->poolSizeX, this->poolSizeY);
+	
+	return (std::shared_ptr<Slice<T>>)maxPools;
 }
+
+template<typename T>
+T MaxPoolingLayer<T>::maxPool(size_t x, size_t y, size_t poolWidth, size_t poolHeight)
+{
+	for (int i = y; i < (y + poolWidth); i++) {
+		for (int j = x; j < (x + poolWidth); j++) {
+
+		}
+	}
+	for (&auto row : this->inputLayer.row()) {
+		for (&auto column : this->inputLayer.column()) {
+
+		}
+	}
+	return T();
+}
+
+
