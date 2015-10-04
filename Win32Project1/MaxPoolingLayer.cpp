@@ -41,16 +41,19 @@ std::shared_ptr<Slice<T>> MaxPoolingLayer<T>::calcuateOutputLayer()
 template<typename T>
 T MaxPoolingLayer<T>::maxPool(size_t x, size_t y, size_t poolWidth, size_t poolHeight)
 {
+	T poolMax = 0;
 	for (int i = y; i < (y + poolWidth); i++) {
 		for (int j = x; j < (x + poolWidth); j++) {
-
+			if (this->inputLayer.getElement(i, j) > poolMax) {
+				poolMax = this->inputLayer.getElement(i, j);
+			}
 		}
-	}
+	}/*
 	for (&auto row : this->inputLayer.row()) {
 		for (&auto column : this->inputLayer.column()) {
 
 		}
-	}
+	}*/
 	return T();
 }
 

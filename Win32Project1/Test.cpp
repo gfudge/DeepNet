@@ -1,5 +1,5 @@
 #include "Test.h"
-#include "Network.h"
+
 
 
 Test::Test(const float targetError, const unsigned int maximumEpochs, const unsigned int epochsBetweenReports)
@@ -7,9 +7,9 @@ Test::Test(const float targetError, const unsigned int maximumEpochs, const unsi
 	this->targetError = targetError;
 	this->maximumEpochs = maximumEpochs;
 	this->epochsBetweenReports = epochsBetweenReports;
-	//this->network = Network();
+	const size_t totalLayers = (size_t) this->hiddenLayers.length();
+	this->network = DeepNet::Network<float>(5, 2, totalLayers, this->hiddenLayers);
 }
-
 
 Test::~Test()
 {

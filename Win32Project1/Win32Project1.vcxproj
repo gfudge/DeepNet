@@ -156,6 +156,7 @@
     <ClCompile Include="Train.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DeepNet.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MaxPoolingLayer.h" />
     <ClInclude Include="Network.h" />

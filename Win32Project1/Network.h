@@ -3,20 +3,24 @@
 #include <vector>
 #include <exception>
 
-class Network
+namespace DeepNet 
 {
-public:
-	Network(unsigned int inputLayerSize, unsigned int outputLayerSize, unsigned int numberOfLayers, std::vector<unsigned int> hiddenLayers);
-	virtual ~Network();
-	void ConstructLayers();
-	void CreateNetworkFromLayers();
-private:
-	unsigned int inputLayerSize;
-	unsigned int outputLayerSize;
-	unsigned int numberOfLayers;
-	std::vector<unsigned int> hiddenLayers;
-	std::vector<unsigned int> layers;
-	struct fann *ann;
+	template <typename T>
+	class Network
+	{
+	public:
+		Network(size_t inputLayerSize, size_t outputLayerSize, size_t numberOfLayers, std::vector<size_t> hiddenLayers);
+		virtual ~Network();
+		void ConstructLayers();
+		void CreateNetworkFromLayers();
+	private:
+		size_t inputLayerSize;
+		size_t outputLayerSize;
+		size_t numberOfLayers;
+		std::vector<unsigned int> hiddenLayers;
+		std::vector<unsigned int> layers;
+		struct fann *ann;
 
-};
+	};
 
+}

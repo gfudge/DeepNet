@@ -1,8 +1,8 @@
 #include "SingleLayerPerceptron.h"
 
 
-
-SingleLayerPerceptron::SingleLayerPerceptron(size_t inputLayerSize, size_t outputLayerSize, size_t hiddenLayerSize, fann_activationfunc_enum activation)
+template <typename T>
+SingleLayerPerceptron<T>::SingleLayerPerceptron(size_t inputLayerSize, size_t outputLayerSize, size_t hiddenLayerSize, fann_activationfunc_enum activation)
 {
 	this->inputLayerSize = inputLayerSize;
 	this->outputLayerSize = outputLayerSize;
@@ -10,12 +10,14 @@ SingleLayerPerceptron::SingleLayerPerceptron(size_t inputLayerSize, size_t outpu
 	this->activation = activation;
 }
 
-SingleLayerPerceptron::~SingleLayerPerceptron()
+template <typename T>
+SingleLayerPerceptron<T>::~SingleLayerPerceptron()
 {
 	fann_destroy(this->ann);
 }
 
-void SingleLayerPerceptron::ConstructLayers()
+template <typename T>
+void SingleLayerPerceptron<T>::ConstructLayers()
 {
 	if (1 > this->layers.size()) {
 		// Create the layers vector
@@ -31,7 +33,8 @@ void SingleLayerPerceptron::ConstructLayers()
 	}
 }
 
-void SingleLayerPerceptron::CreateLayer()
+template <typename T>
+void SingleLayerPerceptron<T>::CreateLayer()
 {
 	// Check there are some layers
 	if (1 > this->layers.size()) {
@@ -46,7 +49,8 @@ void SingleLayerPerceptron::CreateLayer()
 	}
 }
 
-void SingleLayerPerceptron::SetActivation()
+template <typename T>
+void SingleLayerPerceptron<T>::SetActivation()
 {
 	if (this->ann != nullptr) {
 		fann_set_activation_function_hidden(this->ann, this->activation);

@@ -1,7 +1,10 @@
 #pragma once
-#include "floatfann.h"
+#include "Deepnet.h"
+#include <vector>
+#include <exception>
+#include <memory>
 
-class Test
+class Test : public DeepNet::Network<float>
 {
 public:
 	Test(const float targetError, const unsigned int maximumEpochs, const unsigned int epochsBetweenReports);
@@ -11,6 +14,7 @@ private:
 	float targetError = (const float)0.001;
 	unsigned int maximumEpochs = 500000;
 	unsigned int epochsBetweenReports = 1000;
-	Network network;
+	std::vector<size_t> hiddenLayers[5];
+	std::unique_ptr<DeepNet::Network<float>> network{ new DeepNet::Network<float>(nullptr) };
 };
 
